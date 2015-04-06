@@ -12,11 +12,13 @@
 #define STATE_END	  2
 
 
-void state_init(int *state,int *number)
+int state_init(int *state)
 {
+        int number = 0;
         printf("Please input a integer number, -1 will kill process\n");
-        scanf("%d", number);
+        scanf("%d", &number);
         *state = STATE_PROCESSING;
+        return number;
 }
 
 
@@ -52,7 +54,7 @@ int main()
         if ( state == STATE_INIT )
         {
             /*****  將註解區塊整個改成一個 function ********/
-            state_init(&state,&number);
+            number = state_init(&state);
             /***********************************************/
         }
         else if ( state == STATE_PROCESSING )
