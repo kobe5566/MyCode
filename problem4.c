@@ -14,31 +14,23 @@
 
 void state_init(int *state,int *number)
 {
-
-    if ( *state == STATE_INIT )
-    {
-
         printf("Please input a integer number, -1 will kill process\n");
         scanf("%d", number);
         *state = STATE_PROCESSING;
-
-    }
-
 }
 
 
-void state_processing(int *state,int *number)
+void state_processing(int *state,const int number)
 {
 
-
-    if ( *number == -1 )
+    if ( number == -1 )
     {
         *state = STATE_END;
 
         return;
     }
 
-    printf("%s\n", (*number > 10) ? "The number is bigger than 10" :
+    printf("%s\n", (number > 10) ? "The number is bigger than 10" :
            "The number is not bigger than 10" );
     printf("-------------------------------------------------\n");
     *state = STATE_INIT;
@@ -67,7 +59,7 @@ int main()
         {
 
             /************************************************/
-            state_processing(&state,&number);
+            state_processing(&state,number);
 
             /************************************************/
         }
